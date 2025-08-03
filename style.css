@@ -1,0 +1,633 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Caladea', serif;
+    background-color: black; /* Black minimal background */
+    color: #eee;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    scroll-behavior: smooth; /* Smooth scrolling for navigation */
+}
+
+/* Three.js Wave Container */
+#webgl-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place behind content */
+    pointer-events: none; /* Allow interaction with elements behind it */
+}
+
+/* Main Content Wrapper */
+.content {
+    position: relative;
+    z-index: 1; /* Ensure content is above the wave animation */
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: transparent; /* Make content background transparent */
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: black;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: transparent;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: flex-start; /* Start items from the left */
+    align-items: center; /* Vertically center items */
+    /* Removed margin-right: auto; and margin-left: auto from .navbar itself */
+}
+
+.navbar:hover {
+    box-shadow: 0 0 20px rgba(155, 156, 157, 0.7), 0 0 30px rgba(155, 156, 157, 0.7);
+    transform: translateY(-2px);
+}
+
+.cat-logo {
+    display: block;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+    margin-right: auto; /* Space between logo and nav links wrapper */
+     margin-left: 10%;/* Remove any specific margin-left here unless you want to push it from the very edge */
+    z-index: 1;
+}
+
+.cat-logo:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.cat-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 0%;
+}
+
+.cat-logo img:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    animation: glow 1.5s infinite alternate;
+}
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    }
+    to {
+        filter: drop-shadow(0 0 16px rgba(255, 255, 255, 1));
+    }
+}
+.nav-links-wrapper {
+    display: flex;
+    align-items: center;
+    /* This is the key change to move buttons more to the left */
+    /* It consumes available space to its left, effectively pushing itself right */
+    /* We'll use this to control the *gap* between logo and links, not push the links to the far right. */
+    margin-left: auto; /* Pushes the nav-links-wrapper to the right, using all available space to its left */
+    margin-right: 15%; /* Pulls the buttons inward from the right edge. Adjust this percentage as needed. */
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link a:hover {
+    background-color: transparent;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(155, 156, 157, 0.7);
+    transform: translateY(-3px);
+}
+
+/* Section Styling */
+section {
+    padding: 80px 20px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    background-color: transparent;
+    border: transparent;
+    box-shadow: transparent;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    /* Pop-up animation */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section:hover {
+    box-shadow: transparent;
+    transform: translateY(-5px);
+}
+
+h1, h2, h3 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Landing Section */
+.landing-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 0;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.landing-section h1 {
+    font-size: 4.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    /* Initial state for pop-up animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.landing-section p {
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* Initial state for pop-up animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.landing-section .cta-button {
+    /* Initial state for pop-up animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.landing-section.is-visible h1,
+.landing-section.is-visible p,
+.landing-section.is-visible .cta-button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.landing-section.is-visible h1 {
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.landing-section.is-visible p {
+    transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.landing-section.is-visible .cta-button {
+    transition: opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s;
+}
+/* CTA Button */
+.cta-button {
+    background-color: rgba(155, 156, 157, 0.7);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.cta-button:hover {
+    background-color: rgba(120, 121, 122, 0.7);
+    box-shadow: 0 0 20px rgba(155, 156, 157, 0.9), 0 0 30px rgba(155, 156, 157, 0.7);
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* About Me Section */
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.profile-picture {
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 4px solid rgba(155, 156, 157, 0.7);
+    box-shadow: 0 0 15px rgba(155, 156, 157, 0.7);
+    transition: all 0.3s ease-in-out;
+    flex-shrink: 0;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 0 25px rgba(155, 156, 157, 1), 0 0 40px rgba(155, 156, 157, 0.8);
+}
+
+.about-text {
+    flex-grow: 1;
+    line-height: 1.6;
+    font-size: 1.5em;
+}
+
+/* Project Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.project-item {
+    background-color: rgba(155, 156, 157, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(155, 156, 157, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-item:hover {
+    box-shadow: 0 0 20px rgba(155, 156, 157, 0.7), 0 0 30px rgba(155, 156, 157, 0.7);
+    transform: translateY(-5px);
+}
+
+.project-item h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.project-item p {
+    margin: 10px 0;
+    color: #eee;
+}
+
+.project-item .project-links {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.project-item .project-links a {
+    text-decoration: none;
+    color: rgba(155, 156, 157, 0.7);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-item .project-links a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* New Education Triangle Section */
+.education-triangle-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.education-triangle-container::before,
+.education-triangle-container::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(155, 156, 157, 0.3);
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+}
+
+/* The lines forming the triangle */
+.education-triangle-container::before {
+    width: 1px;
+    height: 80%;
+    transform: translate(-50%, -50%) rotate(30deg);
+    transform-origin: center;
+}
+
+.education-triangle-container::after {
+    width: 1px;
+    height: 80%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    transform-origin: center;
+}
+
+.education-triangle-container .line-base {
+    position: absolute;
+    bottom: 50px;
+    width: 80%;
+    height: 1px;
+    background-color: rgba(155, 156, 157, 0.3);
+    z-index: -1;
+}
+
+.education-item {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(155, 156, 157, 0.3);
+    max-width: 250px;
+}
+
+.education-item:hover {
+    box-shadow: 0 0 20px rgba(155, 156, 157, 0.7);
+    transform: translateY(-5px);
+}
+
+.education-item h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.education-item p {
+    margin: 5px 0;
+    color: #eee;
+}
+
+.education-top {
+    margin-bottom: 50px;
+}
+
+.education-bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.skill-item {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    box-shadow: transparent;
+    transition: all 0.3s ease-in-out;
+    border: transparent;
+}
+
+.skill-item:hover {
+    box-shadow: 0 0 20px rgba(155, 156, 157, 0.7), 0 0 30px rgba(155, 156, 157, 0.7);
+    transform: translateY(-5px);
+}
+
+.skill-item i {
+    font-size: 2.8em;
+    color: rgba(155, 156, 157, 0.7);
+    margin-bottom: 10px;
+}
+
+.skill-item strong {
+    font-size: 1.3em;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #555;
+    border-radius: 5px;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: rgba(155, 156, 157, 0.7);
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0px;
+    box-sizing: border-box;
+}
+
+/* Hobbies Section */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.hobby-item {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: transparent;
+    transition: all 0.3s ease-in-out;
+    border: transparent;
+}
+
+.hobby-item:hover {
+    box-shadow: 0 0 20px rgba(155, 156, 157, 0.7), 0 0 30px rgba(155, 156, 157, 0.7);
+    transform: translateY(-5px);
+}
+
+.hobby-item i {
+    font-size: 2.8em;
+    color: rgba(155, 156, 157, 0.7);
+    margin-bottom: 10px;
+}
+
+.hobby-item h3 {
+    font-size: 1.3em;
+    color: #fff;
+    margin: 0;
+}
+
+/* Contact Me Section */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    gap: 15px;
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: #fff;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #eee;
+    font-family: inherit;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: rgba(155, 156, 157, 0.7);
+    box-shadow: 0 0 10px rgba(155, 156, 157, 0.7);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-button {
+    background-color: rgba(155, 156, 157, 0.7);
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.submit-button:hover {
+    background-color: rgba(120, 121, 122, 0.7);
+    box-shadow: 0 0 20px rgba(155, 156, 157, 0.9);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: #aaa;
+    border-top: 1px solid #333;
+}
+
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: #aaa;
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #eee;
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
+
+    .navbar {
+        flex-direction: row-reverse; /* Reverses the order of children to put the logo on the right */
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    section {
+        padding: 50px 15px;
+    }
+
+    .landing-section h1 {
+        font-size: 2.5em;
+    }
+
+    .landing-section p {
+        font-size: 1.2em;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    .about-text {
+        font-size: 1em;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .hobby-item, .skill-item {
+        margin: 10px 0;
+    }
+    .education-bottom {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .education-item {
+        max-width: 100%;
+    }
+    .contact-form {
+        max-width: 100%;
+    }
+}

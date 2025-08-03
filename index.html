@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutaiba Islam Arpa</title>
+    <link rel="icon" href="images/fav.png" type="image/x-icon">
+
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link to your external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="webgl-container"></div>
+
+    <nav class="navbar">
+        <a href="#home" class="cat-logo">
+            <img src="images/catlogo.png" alt="Cat Logo">
+        </a>
+        <div class="nav-links-wrapper">
+            <ul class="nav-links">
+               
+                <li class="nav-link"><a href="#about-me">About</a></li>
+                <li class="nav-link"><a href="#skills">Skills</a></li>
+                <li class="nav-link"><a href="#projects">Projects</a></li>
+                <li class="nav-link"><a href="#education">Education</a></li>
+                <li class="nav-link"><a href="#hobbies">Hobbies</a></li>
+                <li class="nav-link"><a href="#contact-me">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <section id="home" class="landing-section">
+            <h1>Rutaiba Islam Arpa</h1>
+            <p>A showcase of my skills and passions.</p>
+            <a href="CV/CV of Rutaiba.pdf" download="Rubi's CV" class="cta-button" target="_blank">
+                <i class="fas fa-download"></i> Download CV
+            </a>
+        </section>
+
+        <section id="about-me" data-section="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="images/IMG_E4742.JPG" alt="Your Profile Picture" class="profile-picture">
+                <p class="about-text">Hello! I'm a passionate individual with a keen interest in programming and technology. I enjoy learning new concepts, solving problems, and building practical solutions through code. Outside of coding, I like exploring hobbies, reading, and contributing to open-source projects.</p>
+            </div>
+        </section>
+
+        <section id="skills" data-section="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fab fa-html5"></i>
+                    <strong>HTML/CSS</strong>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" data-progress="90">
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-js"></i>
+                    <strong>JavaScript</strong>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" data-progress="80">
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-python"></i>
+                    <strong>Python</strong>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" data-progress="70">
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <strong>C++</strong>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" data-progress="60">
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-file-word"></i>
+                    <strong>Microsoft Word</strong>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" data-progress="95">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start of new Projects Section -->
+        <section id="projects" data-section="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <h3>Online Couurse Management System(OOP project)</h3>
+                    <p>A java based project for easy management of online courses</p>
+                    <div class="project-picture">
+                        <img src="images/p1 (1).jpg" alt="Online Course Management System" class="project-picture">
+                        
+                    </div>
+                
+                
+            </div>
+        </section>
+        <!-- End of new Projects Section -->
+
+        <!-- New Education Triangle Section -->
+        <section id="education" data-section="education">
+            <h2>Education</h2>
+            <div class="education-triangle-container">
+                <div class="education-top">
+                    <div class="education-item">
+                        <h3>Bachelor of Science in Computer Science and Engineering</h3>
+                        <p><strong>University of Asia Pacific</strong></p>
+                        <p><strong>2023 - Present</strong></p>
+                        <p><strong>Coursework:</strong> Data Structures, Algorithms, Object-Oriented...</p>
+                    </div>
+                </div>
+               <div class="education-bottom">
+                    <div class="education-item">
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <p><strong>Dhaka City College</strong></p>
+                        <p><strong>2019 - 2021</strong> </p>
+                        <p><strong>Group:</strong> Science</p>
+                    </div>
+                    <div class="education-item">
+                        <h3>Secondary School Certificate (SSC)</h3>
+                        <p><strong>YWCA Higher Secondary Girls' School and College </strong> </p>
+                        <p><strong>2019</strong> </p>
+                         <p><strong>Group:</strong> Science</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of New Education Triangle Section -->
+
+        <section id="hobbies" data-section="hobbies">
+            <h2>My Hobbies</h2>
+            <div class="hobbies-grid">
+                
+               <div class="hobby-item">
+                    <i class="fas fa-plane"></i> <h3>Travelling</h3>
+               </div>
+                <div class="hobby-item">
+                    <i class="fas fa-camera"></i> <h3>Photography</h3>
+                </div>
+                <div class="hobby-item">
+                    <i class="fas fa-headphones-alt"></i> <h3>Listening to music</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-me" data-section="contact">
+            <h2>Contact Me</h2>
+
+            <form class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Rutaiba Islam Arpa. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://github.com/Meaw38204" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/meaw224" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/01623365839" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+    <!-- Three.js library for the animated wave background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Link to your external script -->
+    <script src="script.js"></script>
+</body>
+</html>
